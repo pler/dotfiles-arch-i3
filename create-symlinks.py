@@ -1,29 +1,31 @@
 #!/usr/bin/python
 
-import fnmatch
+import sys
 import os
-import subprocess
 import re
+import fnmatch
 
-excluded = [ '.git/*', '*.md', os.path.basename(__file__) ]
-target_dir = os.path.join(os.path.expanduser("~"), "test/")
+excluded = ['.git/*', '*.md', os.path.basename(__file__)]
+target_dir = os.path.expanduser("~")
 
 # transform globs into regex
-excluded = r'|'.join([fnmatch.translate(x) for x in excluded]) # transform glob patterns to regex
+excluded = r'|'.join([fnmatch.translate(x) for x in excluded])
 
-def included(filepath):  
+
+def included(filepath):
     return not re.match(excluded, filepath)
 
 for dirpath, subdirnames, filenames in os.walk(os.path.dirname(__file__)):
-    
     for dotfile in filter(included, [os.path.normpath(os.path.join(dirpath, f)) for f in filenames]):
-        dotfile_target = os.path.join(target_dir, dotfile)
+        dotfile_target = os.path.abspath(os.path.join(target_dir, dotfile))
+        dotfile = os.path.abspath(dotfile)
         try:
             os.makedirs(os.path.dirname(dotfile_target))
-        except FileExistsError: # directory already exists
+        except FileExistsError:  # directory already exists
             pass
-        print(dotfile, dotfile_target)
         # create symlinks
-        # os.symlink(dotfile, dotfile_target)
-
-        
+        try:
+            os.symlink(dotfile, dotfile_target)
+            print("created link '{0} -> {1}'".format(dotfile_target, dotfile))
+        except FileExistsError:
+            print("WARNING: '{0}' already exists".format(dotfile_target))
