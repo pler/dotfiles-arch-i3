@@ -1,0 +1,32 @@
+background        no
+out_to_console    yes
+out_to_x    no
+update_interval   1
+total_run_times   0
+short_units   yes
+pad_percents    3
+
+override_utf8_locale yes
+
+TEXT
+,[
+
+# Volume:
+{"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "Mute" } else { print $2"%" }}'}", "color":"\#FFFFFF", "min_width":"m     "},\
+
+# Network
+{"full_text": "▲ ${upspeed enp4s0}", "color":"\#FFFFFF", "min_width":"u  1000"},
+{"full_text": "▼ ${downspeed enp4s0}", "color":"\#FFFFFF", "min_width":"d 1000"},
+
+# Memory
+# {"full_text": " || [$membar] ", "color":"\#B58900"},
+{"full_text": "MEM $memperc%", "color":"\#FFFFFF", "min_width":"MEM 100%"},
+
+# CPU
+# {"full_text": "CPU $cpubar", "color":"\#00A9B5"},
+{"full_text": "CPU $cpu%", "color":"\#FFFFFF", "min_width":"CPU 100%"},
+
+# see man strftime
+{"full_text": "${time %y-%m-%d} ${time %H:%M}","color": "\#FFFFFF"}
+
+]

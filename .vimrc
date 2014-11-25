@@ -76,6 +76,9 @@ endfunction
 " inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 " inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
 
+" paste mode
+set pastetoggle=<F4>
+
 " redraw screen and remove any search highlighting
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 

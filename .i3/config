@@ -11,16 +11,17 @@ set $mod Mod1
 # is used in the bar {} block below. 
 # font -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# font pango: DejaVuSans 10
-# font pango: Ubuntu Mono 10
-# font pango: Monaco 10
-font pango: Source Code Pro 10
+#font pango: DejaVuSans 10
+# font pango: Ubuntu Mono 8
+# font pango: Monaco 8
+font pango: Source Code Pro Semibold 8
 
 # i3bar 
 bar {
-    status_command i3status -c ~/.i3/i3status.conf
-	position top
-    font pango: Source Code Pro 11.5
+    # status_command i3status -c ~/.i3/i3status.conf
+    status_command ~/.i3/conky.sh
+	  position top
+    font pango: Source Code Pro Semibold 10
 }
 
 # reload the configuration file
