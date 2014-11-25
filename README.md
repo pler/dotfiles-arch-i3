@@ -9,3 +9,7 @@ cd dotfiles-arch-i3
 chmod +x create-symlinks.py
 ./create-symlinks.py
 ```
+
+## Notes
+* General post install notes [here](g)
+* Lenovo L430 specific notes [here](x)
