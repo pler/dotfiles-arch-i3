@@ -1,4 +1,4 @@
-URxvt.font:xft:Source Code Pro:Semibold:pixelsize=14:antialias=true:hinting=true
-URxvt.boldFont:xft:Source Code Pro:Semibold:pixelsize=14:antialias=true:hinting=true
-URxvt.italicFont:xft:Source Code Pro:Semibold:pixelsize=14:antialias=true:hinting=true
-URxvt.boldItalicFont:xft:Source Code Pro:Semibold:pixelsize=14:antialias=true:hinting=true
+Rxvt.font:xft:Source Code Pro:pixelsize=14:antialias=true:hinting=true
+URxvt.boldFont:xft:Source Code Pro:pixelsize=14:antialias=true:hinting=true
+URxvt.italicFont:xft:Source Code Pro:pixelsize=14:antialias=true:hinting=true
+URxvt.boldItalicFont:xft:Source Code Pro:pixelsize=14:antialias=true:hinting=true
