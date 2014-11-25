@@ -2,6 +2,8 @@
 
 set t_Co=256
 colorscheme Tomorrow-Night-Bright    " https://github.com/ChrisKempson/Tomorrow-Theme
+set         background=dark          " use dark variation
+
 syntax    	on                       " enable syntax highlighting
 set       	nocompatible             " enable nocompatible options
 filetype  	plugin indent on         " load indent for filetype
@@ -18,7 +20,6 @@ set       	nostartofline            " prevent cursor to change current column wh
 set       	backspace=2              " fix backspace
 set       	laststatus=2             " show status line, even when only one window is open
 set       	shortmess=at             " shorten messages to a minimum
-set         background=dark          " use dark variation
 set         title
 set         titlestring=%f%(\ [%M]%)          " Show file name at the title
 

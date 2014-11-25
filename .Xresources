@@ -35,6 +35,7 @@ URxvt*letterSpace:     -2.5
 
 ! Colors
 #include ".config/term-colors/XresourceTomorrowNightBright"
+!#include ".config/term-colors/XresourceTomorrowNight"
 
 ! default fonts for xorg apps
 *font: -*-fixed-medium-r-normal-*-*-130-*-*-*-*-iso10646-1
