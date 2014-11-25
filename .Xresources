@@ -21,14 +21,14 @@ Xft.antialias:         1
 Xft.rgba:              rgb
 Xft.autohint:          0
 Xft.lcdfilter:         lcddefault
-Xft.hinting:           0
-!Xft.hintstyle:         hintslight
+Xft.hinting:           1
 Xft.hintstyle:         hintfull
 
 ! Font
-URxvt*letterSpace:     -2.5
+URxvt*letterSpace:     -1.8
 !#include ".config/term-fonts/monaco"
-#include ".config/term-fonts/source"
+#include ".config/term-fonts/liberation"
+!#include ".config/term-fonts/source"
 !#include ".config/term-fonts/meslo"
 !#include ".config/term-fonts/dejavu"
 !#include ".config/term-fonts/ubuntu"
