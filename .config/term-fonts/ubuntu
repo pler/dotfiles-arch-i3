@@ -1,0 +1,4 @@
+URxvt.font:xft:ubuntu mono:antialias=true:hinting=true
+URxvt.boldFont:xft:ubuntu mono:antialias=true:hinting=true
+URxvt.italicFont:xft:ubuntu mono:antialias=true:hinting=true
+URxvt.boldItalicFont:xft:ubuntu mono:antialias=true:hinting=true

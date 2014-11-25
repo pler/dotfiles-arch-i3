@@ -1,0 +1,42 @@
+! Urxvt
+
+! Scrollbar
+URxvt*scrollBar_right: false
+URxvt*scrollBar:       false
+URxvt*borderLess:      false
+URxvt*internalBorder:  3
+
+! URL highlighting
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher:     /usr/bin/chromium
+URxvt.matcher.button:  1
+URxvt.matcher.rend.0:  Uline Bold fg8
+
+! fix lag caused by hinting and antialiasing
+Urxvt*buffered:          false
+
+! xft settings
+Xft.dpi:               96
+Xft.antialias:         1
+Xft.rgba:              rgb
+Xft.autohint:          0
+Xft.lcdfilter:         lcddefault
+Xft.hinting:           1
+Xft.hintstyle:         hintfull
+
+
+! Font
+URxvt*letterSpace:     -2
+!#include ".config/term-fonts/monaco"
+#include ".config/term-fonts/source"
+!#include ".config/term-fonts/meslo"
+!#include ".config/term-fonts/dejavu"
+!#include ".config/term-fonts/ubuntu"
+
+! Colors
+#include ".config/term-colors/XresourceTomorrowNightBright"
+
+! default fonts for xorg apps
+*font: -*-fixed-medium-r-normal-*-*-130-*-*-*-*-iso10646-1
+*boldFont: -*-fixed-medium-r-normal-*-*-130-*-*-*-*-iso10646-1
+

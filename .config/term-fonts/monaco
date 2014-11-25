@@ -1,0 +1,4 @@
+URxvt.font:xft:Monaco:antialias=true:hinting=true
+URxvt.boldFont:xft:Monaco:antialias=true:hinting=true
+URxvt.italicFont:xft:Monaco:antialias=true:hinting=true
+URxvt.boldItalicFont:xft:Monaco:antialias=true:hinting=true

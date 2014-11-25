@@ -1,0 +1,4 @@
+URxvt.font:xft:DejaVu Sans Mono:style=regular:pixelsize=12:antialias=true
+URxvt.boldFont:xft:DejaVu Sans Mono:style=regular:pixelsize=12:antialias=false
+URxvt.italicFont:xft:DejaVu Sans Mono:style=regular:pixelsize=12:antialias=false
+URxvt.boldItalicFont:xft:DejaVu Sans Mono:style=regular:pixelsize=12:antialias=false

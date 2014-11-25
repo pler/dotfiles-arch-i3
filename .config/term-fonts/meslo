@@ -1,0 +1,4 @@
+URxvt.font:xft:Meslo LG S DZ:antialias=true:hinting=true
+URxvt.boldFont:xft:Meslo LG S DZ:antialias=true:hinting=true
+URxvt.italicFont:xft:Meslo LG S DZ:antialias=true:hinting=true
+URxvt.boldItalicFont:xft:Meslo LG S DZ:antialias=true:hinting=true
