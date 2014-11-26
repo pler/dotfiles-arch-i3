@@ -166,6 +166,7 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
 * `jdk8-openjdk` or `jdk7-openjdk`
 * switch between environments via `archlinux-java <status|get|set X|unset|fix>`
 * fix font rendering and make swing use GTK look and feel:<br> `export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'`
+  * add this line to `/etc/profile.d/jre.sh`
 
 ##### Fonts
 * `adobe-source-code-pro-fonts` `ttf-dejavu` `ubuntu-font-family` `ttf-monaco`
