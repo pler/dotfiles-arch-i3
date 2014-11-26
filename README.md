@@ -1,6 +1,6 @@
-# Arch Linux dotfiles
+# Arch Linux dotfiles and post-installation notes
 
-This repository contains my personal configuration files.
+This repository contains my configuration files and some personal notes.
 
 ```sh
 git clone https://github.com/pler/dotfiles-arch-i3.git
@@ -10,13 +10,11 @@ chmod +x create-symlinks.py
 ```
 
 -------------------------------------------------------------------------------
-# Post-installation
+## Post-installation notes
 
-Some personal notes for my setup...
+### Package Management
 
-## Package Management
-
-### automatically updated & rated mirror list
+##### automatically updated & rated mirror list
 1. install: `reflector`
 2. create new service: `/etc/systemd/system/reflector.service`
   ```
@@ -42,14 +40,14 @@ Some personal notes for my setup...
   ```
 4. enable timer: `systemctl enable reflector.timer`
 
-### yaourt (AUR)
+##### yaourt (AUR)
 1. download tarballs
   * https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz
   * https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz
 2. unzip and install `tar zxvf *.tar.gz` & `cd *` & `makepkg -si`
 
 
-## CLI
+### CLI
 
 * install: `rxvt-unicode`
 * install: `zsh` `zsh-grml-config` `zsh-completions`
@@ -57,14 +55,14 @@ Some personal notes for my setup...
   * add to `~/.zshrc` (in that order):<br>`source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`<br>`source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh`
   * change shell `chsh -s /usr/bin/zsh`, check `/etc/shells` and `/etc/passwd`
 
-## Graphics
+### Graphics
 
-### Xorg
+##### Xorg
 * install: `xorg` `xorg-xinit` # `xterm` `xorg-twm`
 * add to `.xinitrc` to enable zapping:<br> `setxkbmap -option terminate:ctrl_alt_bksp`
 * add to `.xinitrc` to heighten keyboard rate:<br> `xset r rate 200 30`
 
-### graphics drivers
+##### graphics drivers
 * identify card via `lscpi | grep -e VGA -e 3D`
 * install: `xf86-video-nouveau` || `nvidia`
 * for optimus/bumblebee:
@@ -77,19 +75,19 @@ Some personal notes for my setup...
   7. reboot to *BIOS*, switch to Optimus
   8. test via `optirun glxgears -info` (package: `mesa-demos`)<br> check `cat /proc/acpi/bbswitch`
 
-### Multihead
+##### Multihead
 * `xrandr` to see attached monitors
 * add to `.xinitrc`:<br>`xrandr --output <primary> --auto --primary --output <secondary> --auto --right-of <primary>`
 * GUI: `lxrandr`, CLI: `disper`
 
 
-## i3
+### i3
 
 1. install: `i3-wm` `i3lock` `i3status` `dmenu`
 2. add to (`.bash_profile` && (`.zlogin` || `.zprofile`)):<br>`[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx`
 3. `cp /etc/skel/.xinitrc ~/ && echo 'exec i3' >> ~/.xinitrc `
 
-### fix font rendering
+##### fix font rendering
 1. add to `/etc/pacman.conf`:
 ```
 [infinality-bundle]
@@ -103,15 +101,15 @@ Server = http://bohoomil.com/repo/$arch
 
 https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
 
-### GTK
+##### GTK
 * GUI config tool: `lxappearance`
 * themes & icons: `gnome-themes-standard` `faenza-icon-theme`
 
-### Compton (optional)
+##### Compton (optional)
 * install: `compton-git`
 * add to `.xinitrc`:<br> `exec --no-startup-id compton -d --vsync opengl`<br> (use `--backend glx` with good gpu)
 
-### Enhancements
+##### Enhancements
 * for a better status bar, install: `conky`
   * config
 * for a notification manager, install: `dunst`
@@ -119,9 +117,9 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
 
 
 
-## System
+### System
 
-### time correction
+##### time correction
 * install: `ntp`
 * add `de.pool.ntp.org` to `/etc/ntp.conf`
 * sync time via `ntpd -gq` (check if correct via `date`)
@@ -132,13 +130,13 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
   `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal`
 
 
-### USB & NTFS
+##### USB & NTFS
 * install: `udisks2` `gvfs` `gvfs-afc` `ntfs-3g` `ntfs-config`
 * Disable hibernation & fast restarting *in WINDOWS* which block permissions
   * `powercfg /h off`
 * run `ntfs-config`, check `/etc/fstab`
 
-### SSD
+##### SSD
 * veritfy TRIM support via `hdparm -I /dev/sda | grep TRIM`
 * chose one of the following options
   1. online: using `discard` flag
@@ -149,40 +147,40 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
     * `systemctl enable fstrim.timer` (weekly)
 
 
-### sound
+##### sound
 * install: `alsa-utils` `playerctl`
 
 
-## Additional software
+### Additional software
 
-### General
+##### General
 * `htop` `tree`
 * `thunar` `xarchive` `ristretto` `evince`
 * `shellcheck`
 
-### Python
+##### Python
 * `python`, `python-pip` # `python2` `python2-pip`
 * `pip install pep8`
 
-### Java
+##### Java
 * `jdk8-openjdk` or `jdk7-openjdk`
 * switch between environments via `archlinux-java <status|get|set X|unset|fix>`
 * fix font rendering and make swing use GTK look and feel:<br> `export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'`
 
-### Fonts
+##### Fonts
 * `adobe-source-code-pro-fonts` `ttf-dejavu` `ubuntu-font-family` `ttf-monaco`
 * manual font installation: `mv *.ttf /usr/share/fonts/TTF`, update font cache `fc-cache -vf`
 * `xorg-xfontsel` to select X11 fonts, `gtk2fontsel` for xft fonts (GUI)
 
 
 -------------------------------------------------------------------------------
-# Thinkpad L430s
+## Thinkpad L430s
 
 * for the touchpad, install:`x86-input-synaptics`
 * for the webcam, install: `guvcview`
 * relevant: https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_T420
 
-## Power management
+### Power management
 * install: `powertop`
   * check and enable tunables (wifi, audio, SATA link, usb power mgmt)
 * (additional tools: `tlp` || `laptop-power-mode`)
@@ -191,14 +189,14 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
   and adjust values
 * **TODO**: timed suspend, bluetooth
 
-## ACPI
+### ACPI
 
 * handles some basic controls, install: `thinkpad_acpi`
 * additional ACPI support, install: `acpid`
   * bindings can be found in `/etc/acpi/handler.sh`
 * brightness controls didn't work out of the box (no scancodes for the keys) until I booted with `acpi_backlight=vendor acpi_osi=Linux` as kernel parameters
 
-### ACPI events
+##### ACPI events
 Event | Key | acpid event | comment | handeled via thinkpad_aci | keysym
 --- | --- | --- | --- | --- | ---
 mute | | `button/mute MUTE 00000080 00000000` | | | `XF86AudioMute`
