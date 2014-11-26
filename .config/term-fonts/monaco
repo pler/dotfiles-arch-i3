@@ -1,4 +1,0 @@
-URxvt*font:xft:Monaco:pixelsize=13:antialias=false:hinting=true
-URxvt*boldFont:xft:Monaco:bold:pixelsize=13:antialias=false:hinting=true
-URxvt*italicFont:xft:Monaco:italic:pixelsize=13:antialias=false:hinting=true
-URxvt*boldItalicFont:xft:Monaco:bold:italic:pixelsize=13:antialias=false:hinting=true

@@ -1,4 +1,0 @@
-URxvt.font:xft:liberation mono:style=regular:pixelsize=13:antialias=true:hinting=true
-URxvt.boldFont:xft:liberation mono:bold:pixelsize=13:antialias=true:hinting=true
-URxvt.italicFont:xft:liberation mono:italic:pixelsize=13:antialias=true:hinting=true
-URxvt.boldItalicFont:xft:liberation mono:italic:bold:pixelsize=13:antialias=true:hinting=true
