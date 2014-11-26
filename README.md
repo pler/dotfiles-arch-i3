@@ -200,7 +200,7 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
 
 ### ACPI events
 Event | Key | acpid event | comment | handeled via thinkpad_aci | keysym
---- | --- | --- | --- | ---
+--- | --- | --- | --- | --- | ---
 mute | | `button/mute MUTE 00000080 00000000` | | | `XF86AudioMute`
 volume - | | `button/volumedown VOLDN 00000080 00000000` | | | `XF86AudioLowerVolume`
 volume + | | `button/volumeup VOLUP 00000080 00000000` | | | `XF86AudioRaiseVolume`
