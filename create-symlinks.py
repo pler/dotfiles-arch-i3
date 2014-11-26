@@ -5,7 +5,7 @@ import os
 import re
 import fnmatch
 
-excluded = ['.git/*', '*.md', os.path.basename(__file__)]
+excluded = ['.git/*', 'thinkpadl430/*', '*.md', os.path.basename(__file__)]
 target_dir = os.path.expanduser("~")
 
 # transform globs into regex

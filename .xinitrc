@@ -12,13 +12,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # load style
-xrdb $HOME/.Xresources
+xrdb -merge $HOME/.Xresources
 
 # keyboard rate
 xset r rate 200 30
 
 # enable zapping
 setxkbmap -option terminate:ctrl_alt_bksp
+
+# compton
+compton -d --vsync opengl #--backend glx
 
 # autoconfigure multihead
 xrandr --output DVI-I-1 --auto --primary --output DVI-I-2 --auto --right-of DVI-I-1
