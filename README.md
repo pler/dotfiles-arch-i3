@@ -49,7 +49,7 @@ chmod +x create-symlinks.py
 
 ### CLI
 
-* install: `rxvt-unicode`
+* install: `roxterm` || `rxvt-unicode`
 * install: `zsh` `zsh-grml-config` `zsh-completions`
   * install: `zsh-syntax-highlighting-git` `zsh-history-substring-search-git`
   * add to `~/.zshrc` (in that order):<br>`source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`<br>`source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh`
