@@ -65,6 +65,7 @@ chmod +x create-symlinks.py
 ##### graphics drivers
 * identify card via `lscpi | grep -e VGA -e 3D`
 * install: `xf86-video-nouveau` || `nvidia`
+  * black screen at boot: https://wiki.archlinux.org/index.php/NVIDIA#Black_screen_on_systems_with_Intel_integrated_GPU  
 * for optimus/bumblebee:
   1. switch to integrated graphics in *BIOS*
   2. (remove old drivers `nvidia` `xf86-video-nouveau` `nouveau-dri`)
