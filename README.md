@@ -12,7 +12,7 @@ chmod +x create-symlinks.py
 -------------------------------------------------------------------------------
 ## Post-installation notes
 
-### Package Management
+### Package Managementj
 
 ##### automatically updated & rated mirror list
 1. install: `reflector`
@@ -108,7 +108,8 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
 
 ##### Compton (optional)
 * install: `compton-git`
-* add to `.xinitrc`:<br> `exec --no-startup-id compton -d --vsync opengl`<br> (use `--backend glx` with good gpu)
+* add to `.xinitrc`:<br> `exec --no-startup-id compton -d --vsync opengl --backend glx  --glx-swap-method 1`
+* in `nvidia-settings` disable OpenGL Settings -> Allow Flipping 
 
 ##### Enhancements
 * for a better status bar, install: `conky`
@@ -138,7 +139,7 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
 * run `ntfs-config`, check `/etc/fstab`
 
 ##### SSD
-* veritfy TRIM support via `hdparm -I /dev/sda | grep TRIM`
+* install: `hdparm`, verify TRIM support via `hdparm -I /dev/sda | grep TRIM`
 * chose one of the following options
   1. online: using `discard` flag
     * add to it to `/etc/fstab`<br>
@@ -164,7 +165,7 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
 * `pip install pep8`
 
 ##### Java
-* `jdk8-openjdk` or `jdk7-openjdk`
+* `jdk8-openjdk` || `jdk7-openjdk`
 * switch between environments via `archlinux-java <status|get|set X|unset|fix>`
 * fix font rendering and make swing use GTK look and feel:<br> `export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'`
   * add this line to `/etc/profile.d/jre.sh`
