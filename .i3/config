@@ -17,7 +17,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 #font pango: DejaVuSans 10
 # font pango: Ubuntu Mono 8
 # font pango: Monaco 8
-font pango: Source Code Pro Medium 8
+font pango: Source Code Pro Medium 10
 
 # i3bar
 bar {
@@ -52,10 +52,10 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-bindsym $mod+left focus left
-bindsym $mod+down focus down
-bindsym $mod+up focus up
-bindsym $mod+right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window: vim
 bindsym $mod+shift+h move left
@@ -193,7 +193,10 @@ bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 
 # autostarts
-exec --no-startup-id $term
+# exec --no-startup-id $term
+# exec --no-startup-id feh --bg-scale .config/wallpaper/Aqua_Blue_Mosaic.png
+exec --no-startup-id feh --bg-scale .config/wallpaper/wallhaven-115307.jpg
+
 
 # specific window properties
 assign [class="Spotify"] $WS0

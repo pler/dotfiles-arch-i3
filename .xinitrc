@@ -21,7 +21,7 @@ xset r rate 200 30
 setxkbmap -option terminate:ctrl_alt_bksp
 
 # compton
-compton -d --vsync opengl #--backend glx
+compton -d --vsync opengl --backend glx --glx-swap-method 1
 
 # autoconfigure multihead
 xrandr --output DVI-I-1 --auto --primary --output DVI-I-2 --auto --right-of DVI-I-1

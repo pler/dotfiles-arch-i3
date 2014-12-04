@@ -1,3 +1,7 @@
 alias shutdown="systemctl poweroff"
 alias reboot="systemctl reboot"
 alias i3c="vim $HOME/.i3/config"
+alias ts="tree -L 1"
+alias ta="tree -L 1 -a"
+alias tts="tree -L 2"
+alias tta="tree -L 2 -a"
