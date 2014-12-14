@@ -7,7 +7,7 @@ git clone https://github.com/pler/dotfiles-arch-i3.git
 cd dotfiles-arch-i3
 chmod +x create-symlinks.py
 ./create-symlinks.py
-```g
+```
 
 -------------------------------------------------------------------------------
 ## Post-installation notes
