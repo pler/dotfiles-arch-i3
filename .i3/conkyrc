@@ -14,18 +14,13 @@ TEXT
 #{"full_text": "UP  ${upspeed enp4s0}", "color":"\#33CC99", "min_width":"u 1000000"},
 #{"full_text": "DWN ${downspeed enp4s0}", "color":"\#FFFFFF", "min_width":"d 1000000"},
 
-# Volume:
-{"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "color":"\#268BD2"},\
+# CPU
+{"full_text": "▣ [$cpubar]", "color":"\#00A9B5"},
+# {"full_text": "CPU $cpu% [${cpu cpu1}.${cpu cpu2}.${cpu cpu3}.${cpu cpu4}]", "color":"\#DC322F", "min_width":"CPU 99%"},
 
 # Memory
-# {"full_text": " || [$membar] ", "color":"\#B58900"},
 # {"full_text": "MEM $memperc%", "color":"\#FFFFFF", "min_width":"MEM 99%"},
 {"full_text": "≣ [$membar]", "color":"\#B58900"},
-
-# CPU
-{"full_text": "C [$cpubar]", "color":"\#00A9B5"},
-# {"full_text": "CPU $cpu%", "color":"\#DC322F", "min_width":"CPU 99%"},
-
 
 #${if_up wlp12s0}{"full_text": " ≈ ${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%] ","color":"\#33CC99"},
 #$else${if_up enp4s0}{"full_text": " ≈ eth0 ","color":"\#33CC99"},
@@ -48,8 +43,11 @@ TEXT
 #   # ${endif}
 #},
 
+# Volume:
+{"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "color":"\#268BD2", "name":"volume"},\
+
 # keyboard language
-{"full_text": "${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "color":"\#FFFFFF"},\
+{"full_text": "${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "color":"\#FFFFFF", "name":"keyboard"},\
 
 # see man strftime
 { "full_text": "${time %a, %d. %b %H:%M}", "color": "\#FFFFFF"}, 

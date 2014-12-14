@@ -26,6 +26,8 @@ for dirpath, subdirnames, filenames in os.walk(os.path.dirname(__file__)):
         # create symlinks
         try:
             os.symlink(dotfile, dotfile_target)
-            print("created link '{0} -> {1}'".format(dotfile_target, dotfile))
+            # print("created link '{0} -> {1}'".format(dotfile_target, dotfile))
         except FileExistsError:
             print("WARNING: '{0}' already exists".format(dotfile_target))
+
+print("done creating symlinks")

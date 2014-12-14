@@ -12,19 +12,37 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-# font -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
+#font -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 #font pango: DejaVuSans 10
 # font pango: Ubuntu Mono 8
 # font pango: Monaco 8
 font pango: Source Code Pro Medium 10
+# font pango: Ubuntu Mono 13
+
+# colors
+client.focused #007fbf #007fbf #ffffff
+client.unfocused #666666 #666666 #ffffff
+client.urgent #aa0000 #990000 #ffffff
 
 # i3bar
 bar {
     # status_command i3status -c ~/.i3/i3status.conf
     status_command ~/.i3/conky.sh
 	  position top
-    font pango: Source Code Pro Medium 10
+    font pango: Source Code Pro Bold 11
+    colors {
+        # Whole color settings
+        background #232323
+        statusline #DCDCDC
+        separator  #666666
+
+        # Type             border  background font
+        focused_workspace  #008fff #007fff #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #aa0000 #990000 #ffffff
+    }
 }
 
 # reload the configuration file
@@ -62,10 +80,10 @@ bindsym $mod+shift+h move left
 bindsym $mod+shift+j move down
 bindsym $mod+shift+k move up
 bindsym $mod+shift+l move right
-bindsym $mod+shift+left move left
-bindsym $mod+shift+down move down
-bindsym $mod+shift+up move up
-bindsym $mod+shift+right move right
+bindsym $mod+shift+Left move left
+bindsym $mod+shift+Down move down
+bindsym $mod+shift+Up move up
+bindsym $mod+shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+g split h
@@ -91,13 +109,17 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # return to previous workspace
 workspace_auto_back_and_forth yes
 
 # focus on urgent window
 bindsym $mod+x [urgent=latest] focus
+
+# cycle windows
+# bindsym $mod+Tab focus right
+# bindsym $mod+Shift+Tab focus left
 
 # scartchpad
 bindsym $mod+Shift+Tab move scratchpad
@@ -130,6 +152,10 @@ bindsym $mod+7 workspace $WS7
 bindsym $mod+8 workspace $WS8
 bindsym $mod+9 workspace $WS9
 bindsym $mod+0 workspace $WS0
+
+# prev/next workspace
+bindsym $mod+Ctrl+Left workspace prev_on_output
+bindsym $mod+Ctrl+Right workspace next_on_output
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $WS1
@@ -199,8 +225,8 @@ exec --no-startup-id feh --bg-scale .config/wallpaper/wallhaven-115307.jpg
 
 
 # specific window properties
-assign [class="Spotify"] $WS0
-assign [class="Hexchat"] $WS0
+# assign [class="Spotify"] $WS0
+# assign [class="Hexchat"] $WS0
 for_window [window_role="pop-up"] floating enable
 for_window [class="GParted"] floating enable
 for_window [class="Thunar"] floating enable
