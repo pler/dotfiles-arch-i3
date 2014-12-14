@@ -7,12 +7,12 @@ git clone https://github.com/pler/dotfiles-arch-i3.git
 cd dotfiles-arch-i3
 chmod +x create-symlinks.py
 ./create-symlinks.py
-```
+```g
 
 -------------------------------------------------------------------------------
 ## Post-installation notes
 
-### Package Managementj
+### Package Management
 
 ##### automatically updated & rated mirror list
 1. install: `reflector`
@@ -47,14 +47,6 @@ chmod +x create-symlinks.py
 2. unzip and install `tar zxvf *.tar.gz` & `cd *` & `makepkg -si`
 
 
-### CLI
-
-* install: `roxterm` || `rxvt-unicode`
-* install: `zsh` `zsh-grml-config` `zsh-completions`
-  * install: `zsh-syntax-highlighting-git` `zsh-history-substring-search-git`
-  * add to `~/.zshrc` (in that order):<br>`source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`<br>`source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh`
-  * change shell `chsh -s /usr/bin/zsh`, check `/etc/shells` and `/etc/passwd`
-
 ### Graphics
 
 ##### Xorg
@@ -63,7 +55,7 @@ chmod +x create-symlinks.py
 * add to `.xinitrc` to heighten keyboard rate:<br> `xset r rate 200 30`
 
 ##### graphics drivers
-* identify card via `lscpi | grep -e VGA -e 3D`
+* identify card via `lscpi | grep -e VGA -e 3D` (`pciutils`)
 * install: `xf86-video-nouveau` || `nvidia`
   * black screen at boot: https://wiki.archlinux.org/index.php/NVIDIA#Black_screen_on_systems_with_Intel_integrated_GPU  
 * for optimus/bumblebee:
@@ -72,14 +64,23 @@ chmod +x create-symlinks.py
   3. install: `mesa`
   4. install: `nvidia` `nvidia-utils`
   5. install:`bumblebee` `bbswitch` `primus`
-  6. run `systemctl enable bumblebeed`
-  7. reboot to *BIOS*, switch to Optimus
-  8. test via `optirun glxgears -info` (package: `mesa-demos`)<br> check `cat /proc/acpi/bbswitch`
+  6. `usermod -a -G bumblebee <user>`
+  7. run `systemctl enable bumblebeed`
+  8. reboot to *BIOS*, switch to Optimus
+  9. test via `optirun glxgears -info` (package: `mesa-demos`)<br> check `cat /proc/acpi/bbswitch`
 
 ##### Multihead
 * `xrandr` to see attached monitors
 * add to `.xinitrc`:<br>`xrandr --output <primary> --auto --primary --output <secondary> --auto --right-of <primary>`
 * GUI: `lxrandr`, CLI: `disper`
+
+
+### CLI
+* install: `roxterm` || `rxvt-unicode`
+* install: `zsh` `grml-zsh-config` `zsh-completions`
+  * install: `zsh-syntax-highlighting-git` `zsh-history-substring-search-git`
+  * add to `~/.zshrc` (in that order):<br>`source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`<br>`source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh`
+  * change shell `chsh -s /usr/bin/zsh`, check `/etc/shells` and `/etc/passwd`
 
 
 ### i3
@@ -97,14 +98,14 @@ Server = http://bohoomil.com/repo/$arch
 Server = http://bohoomil.com/repo/$arch
 ```
 2. add & sign key: `pacman-key -r 962DDE58` && `pacman-key --lsign-key 962DDE58`
-4. install: `infinality-bundle`
+4. install: `pacman -Syy && pacman -S infinality-bundle`
 5. (additional fonts: `ibfonts-meta-base`)
 
 https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
 
 ##### GTK
 * GUI config tool: `lxappearance`
-* themes & icons: `gnome-themes-standard` `faenza-icon-theme`
+* themes & icons: `gnome-themes-standard` (Adwaita) || `mediterranean-theme` (MediterraneanLightDarkest),  `faenza-icon-theme` (Faenza-Darker)
 
 ##### Compton (optional)
 * install: `compton-git`
