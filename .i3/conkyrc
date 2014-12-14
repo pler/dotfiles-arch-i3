@@ -10,25 +10,50 @@ override_utf8_locale yes
 TEXT
 ,[
 
-# Keyboard:
-{"full_text": "LNG ${exec setxkbmap -query | awk '/layout/{print $2}'}", "color":"\#FFFFFF", "min_width":"m     "},\
-
 # Network
-#{"full_text": "UP  ${upspeed enp4s0}", "color":"\#FFFFFF", "min_width":"u 1000000"},
+#{"full_text": "UP  ${upspeed enp4s0}", "color":"\#33CC99", "min_width":"u 1000000"},
 #{"full_text": "DWN ${downspeed enp4s0}", "color":"\#FFFFFF", "min_width":"d 1000000"},
 
 # Volume:
-{"full_text": "VOL ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUTE" } else { print $2"%" }}'}", "color":"\#FFFFFF", "min_width":"m       "},\
+{"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "color":"\#268BD2"},\
 
 # Memory
 # {"full_text": " || [$membar] ", "color":"\#B58900"},
-{"full_text": "MEM $memperc%", "color":"\#FFFFFF", "min_width":"MEM 99%"},
+# {"full_text": "MEM $memperc%", "color":"\#FFFFFF", "min_width":"MEM 99%"},
+{"full_text": "≣ [$membar]", "color":"\#B58900"},
 
 # CPU
-# {"full_text": "CPU $cpubar", "color":"\#00A9B5"},
-{"full_text": "CPU $cpu%", "color":"\#FFFFFF", "min_width":"CPU 99%"},
+{"full_text": "C [$cpubar]", "color":"\#00A9B5"},
+# {"full_text": "CPU $cpu%", "color":"\#DC322F", "min_width":"CPU 99%"},
+
+
+#${if_up wlp12s0}{"full_text": " ≈ ${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%] ","color":"\#33CC99"},
+#$else${if_up enp4s0}{"full_text": " ≈ eth0 ","color":"\#33CC99"},
+#$else{"full_text": " ≈ no connection ","color":"\#33CC99"},$endif$endif$endif
+
+# battery
+#{
+#  "full_text": "ϟ ${battery_percent BAT0}%",
+#  "min_width": 55,
+#  "align": "center",
+#  "color":
+#   # ${if_match ${battery_percent BAT0}>=95}
+#   #   "\#77BA79"
+#   # ${else}
+#      ${if_match ${battery_percent BAT0}>=25}
+#        "\#4E9FB1"
+#      ${else}
+#        "\#E84F4F"
+#      ${endif}
+#   # ${endif}
+#},
+
+# keyboard language
+{"full_text": "${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "color":"\#FFFFFF"},\
 
 # see man strftime
-{"full_text": "${time %Y-%m-%d %^a} ${time %H:%M}","color": "\#FFFFFF"}
-
+{ "full_text": "${time %a, %d. %b %H:%M}", "color": "\#FFFFFF"}, 
+ 
+# seperator for icons
+{ "full_text": "" }
 ]
