@@ -20,10 +20,16 @@ xset r rate 200 30
 # enable zapping
 setxkbmap -option terminate:ctrl_alt_bksp
 
+# set bg image
+WALLPAPERFILE=$HOME/wallpaper.jpg
+if [ -f $WALLPAPERFILE ]; then
+  feh --bg-scale $WALLPAPERFILE
+fi
+
 # compton
-compton -d --vsync opengl --backend glx --glx-swap-method 1
+# compton -d --vsync opengl --backend glx --glx-swap-method 1
 
 # autoconfigure multihead
-xrandr --output DVI-I-1 --auto --primary --output DVI-I-2 --auto --right-of DVI-I-1
+# xrandr --output DVI-I-1 --auto --primary --output DVI-I-2 --auto --right-of DVI-I-1
 
 exec i3

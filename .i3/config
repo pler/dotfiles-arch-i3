@@ -218,18 +218,12 @@ bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 
-# autostarts
-# exec --no-startup-id $term
-# exec --no-startup-id feh --bg-scale .config/wallpaper/Aqua_Blue_Mosaic.png
-exec --no-startup-id feh --bg-scale .config/wallpaper/wallhaven-115307.jpg
-
-
 # specific window properties
 # assign [class="Spotify"] $WS0
 # assign [class="Hexchat"] $WS0
 for_window [window_role="pop-up"] floating enable
 for_window [class="GParted"] floating enable
-for_window [class="Thunar"] floating enable
+# for_window [class="Thunar"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Grub-customizer"] floating enable
 for_window [class="Xarchive"] floating enable
