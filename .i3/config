@@ -30,7 +30,7 @@ bar {
     # status_command i3status -c ~/.i3/i3status.conf
     status_command ~/.i3/conky.sh
 	  position top
-    font pango: Source Code Pro Bold 11
+    font pango: Source Code Pro Medium 10
     colors {
         # Whole color settings
         background #232323
@@ -197,6 +197,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Pause mode "$mode_system"
+bindsym XF86Launch1 mode "$mode_system"
 
 # -----------------------------------------------------------------------------
 # APPLICATIONS
@@ -217,13 +218,14 @@ bindsym XF86AudioLowerVolume exec "amixer set Master '3%-'"
 bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
+bindsym XF86ScreenSaver exec --no-startup-id slimlock
 
 # specific window properties
 # assign [class="Spotify"] $WS0
 # assign [class="Hexchat"] $WS0
 for_window [window_role="pop-up"] floating enable
 for_window [class="GParted"] floating enable
-# for_window [class="Thunar"] floating enable
+for_window [class="Wicd-client.py"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Grub-customizer"] floating enable
 for_window [class="Xarchive"] floating enable

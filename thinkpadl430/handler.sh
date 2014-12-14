@@ -32,7 +32,7 @@ button/power)
 ;;
 
 button/screenlock)
-  # i3lock -c 111111 -d
+  # slimlock 
 ;;
 
 button/sleep)
@@ -45,9 +45,7 @@ button/wlan)
 
 video/switchmode) # video output switch
   # cycle monitor modes (single vs extended)
-  # cyclecommand="disper --cycle --cycle-stages=-s:-e"
-  # su phil - -c "XAUTHORITY=/home/phil/.Xauthority DISPLAY=:0 $(printf '%q ' $cyclecommand)" &
-  # su phil - -c "XAUTHORITY=/home/phil/.Xauthority DISPLAY=:0 $(printf '%q ' notify-send "Monitor" "$cyclecommand")" &
+  # /home/phil/bin/toggle.sh
 ;;
 
 video/brightnessdown)

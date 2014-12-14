@@ -149,10 +149,24 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
     * install `util-linux` (provides `fstrim.service` and `fstrim.timer`)
     * `systemctl enable fstrim.timer` (weekly)
 
-
 ##### sound
 * install: `alsa-utils` `playerctl`
 
+##### screen lock
+* install: `slimlock`
+  * `cp /usr/share/slimlock/example-slim.conf /etc/slim.conf`
+  * create service `/etc/systemd/system/slimlock.service` & enable via `systemctl enable slimlock.service`
+  ```
+  [Unit]
+  Description=Lock X session using slimlock
+  [Service]
+  User=phil
+  ExecStart=/usr/bin/slimlock
+  [Install]
+  WantedBy=sleep.target
+  ```
+* install: `xautolock`
+  * autolock: `xautolock -time 10 -locker 'slimlock'`
 
 ### Additional software
 
