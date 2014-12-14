@@ -5,15 +5,17 @@ update_interval   1
 total_run_times   0
 short_units   yes
 pad_percents    3
-
 override_utf8_locale yes
 
 TEXT
 ,[
 
+# Keyboard:
+{"full_text": "LNG ${exec setxkbmap -query | awk '/layout/{print $2}'}", "color":"\#FFFFFF", "min_width":"m     "},\
+
 # Network
-{"full_text": "UP  ${upspeed enp4s0}", "color":"\#FFFFFF", "min_width":"u 1000000"},
-{"full_text": "DWN ${downspeed enp4s0}", "color":"\#FFFFFF", "min_width":"d 1000000"},
+#{"full_text": "UP  ${upspeed enp4s0}", "color":"\#FFFFFF", "min_width":"u 1000000"},
+#{"full_text": "DWN ${downspeed enp4s0}", "color":"\#FFFFFF", "min_width":"d 1000000"},
 
 # Volume:
 {"full_text": "VOL ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUTE" } else { print $2"%" }}'}", "color":"\#FFFFFF", "min_width":"m       "},\
