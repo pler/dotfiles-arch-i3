@@ -35,7 +35,7 @@ case `hostname -s` in
     setxkbmap de &
     nm-applet &
     xrandr --output LVDS1 --auto --primary --output VGA1 --off &
-    xautolock -time 5 -locker 'slimlock' &
+    xautolock -time 5 -locker '$HOME/bin/i3exit.sh lock' &
   ;;
   "phil-desktop-linux")
     # compton

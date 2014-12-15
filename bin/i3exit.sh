@@ -1,7 +1,7 @@
 #!/bin/sh
 
 lock() {
-  slimlock
+  i3lock -f
 }
 
 case "$1" in
