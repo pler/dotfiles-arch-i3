@@ -32,7 +32,7 @@ button/power)
 ;;
 
 button/screenlock)
-  # slimlock 
+  # handled in i3 config
 ;;
 
 button/sleep)
@@ -44,8 +44,7 @@ button/wlan)
 ;;
 
 video/switchmode) # video output switch
-  # cycle monitor modes (single vs extended)
-  # /home/phil/bin/toggle.sh
+  # handled in i3
 ;;
 
 video/brightnessdown)

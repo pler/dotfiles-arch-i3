@@ -11,14 +11,26 @@ TEXT
 ,[
 
 # CPU
-{"full_text": "▣ [$cpubar]", "color":"\#ffffff"},
+{"full_text": "▣ [$cpubar]"},
 # {"full_text": "CPU $cpu% [${cpu cpu1}.${cpu cpu2}.${cpu cpu3}.${cpu cpu4}]", "color":"\#FFFFFF", "min_width":"CPU 99%"},
 
 # Memory
 # {"full_text": "MEM $memperc%", "color":"\#FFFFFF", "min_width":"MEM 99%"},
-{"full_text": "≣ [$membar]", "color":"\#FFFFFF"},
+{"full_text": "≣ [$membar]" },
 
 # network
+${if_empty ${exec cat /proc/net/wireless | grep wlp7s0}}
+{
+"full_text":"test"
+# ${if_up wlp7s0}
+#   "full_text": "wifi ${wireless_essid wlp7s0} (${wireless_link_qual_perc wlp7s0}%)",
+# $endif
+# ${if_up enp13s0}
+#   "full_text": "eth",
+# $endif
+},
+$endif
+
 #${if_up wlp7s0}{"full_text": " ≈ ${wireless_essid wlp7s0} [${wireless_link_qual_perc wlp7s0}%] ","color":"\#33CC99"},
 #$else${if_up enp13s0}{"full_text": " ≈ eth0 ","color":"\#33CC99"},
 #$else{"full_text": " ≈ no connection ","color":"\#33CC99"},$endif$endif$endif
@@ -27,29 +39,20 @@ TEXT
 
 # battery
 {
-  "full_text": "ϟ ${battery_percent BAT0}%",
-  # "min_width": 55,
-  "align": "center",
-  "color":
-    ${if_match ${battery_percent BAT0}>=95}
-      "\#ffffff"
-    ${else}
-      ${if_match ${battery_percent BAT0}>=25}
-        "\#ffff00"
-      ${else}
-        "\#E84F4F"
-      ${endif}
-    ${endif}
+  "full_text": "ϟ ${battery_percent BAT0}%"
+  ${if_match ${battery_percent BAT0}<20}
+    , "color": "\#E84F4F"
+  ${endif}
 },
 
 # Volume:
-{"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "color":"\#ffffff", "name":"volume"},\
+{"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "name":"volume"},\
 
 # keyboard language
-{"full_text": "${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "color":"\#FFFFFF", "name":"keyboard"},\
+{"full_text": "${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "name":"keyboard"},
 
 # see man strftime
-{ "full_text": "${time %a, %d. %b %H:%M}", "color": "\#ffffff", "name":"time"},
+{ "full_text": "${time %a, %d. %b %H:%M}", "name":"time"},
  
 # seperator for icons
 { "full_text": "" }

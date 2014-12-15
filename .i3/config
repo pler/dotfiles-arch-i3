@@ -21,7 +21,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # font pango: Ubuntu Mono 8
 # font pango: Monaco 8
 # font pango: Source Code Pro Medium 10
-font xft:Monospace 9
+#font pango: Monospace 8
 # font pango: Ubuntu Mono 13
 
 # colors
@@ -229,6 +229,7 @@ bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 bindsym XF86ScreenSaver exec --no-startup-id $HOME/bin/i3exit.sh lock
+bindsym XF86Display exec --no-startup-id $HOME/bin/toggle.sh
 
 # specific window properties
 # assign [class="Spotify"] $WS0
