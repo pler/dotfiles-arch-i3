@@ -162,6 +162,7 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
 ##### General
 * `htop` `tree`
 * `thunar` `xarchive` `ristretto` `evince`
+* `imgur-screenshot`
 * `shellcheck`
 
 ##### Python
