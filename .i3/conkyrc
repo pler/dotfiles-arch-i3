@@ -20,16 +20,16 @@ TEXT
 {"full_text": "≣ [$membar]" },
 
 # network
+{ "full_text" : "wlan ✖ ✓"},
 ${if_empty ${exec cat /proc/net/wireless | grep wlp7s0}}
-{
-"full_text":"test"
+# {
 # ${if_up wlp7s0}
 #   "full_text": "wifi ${wireless_essid wlp7s0} (${wireless_link_qual_perc wlp7s0}%)",
 # $endif
 # ${if_up enp13s0}
 #   "full_text": "eth",
 # $endif
-},
+# },
 $endif
 
 #${if_up wlp7s0}{"full_text": " ≈ ${wireless_essid wlp7s0} [${wireless_link_qual_perc wlp7s0}%] ","color":"\#33CC99"},
@@ -39,7 +39,6 @@ $endif
 #{"full_text": "DWN ${downspeed enp4s0}", "color":"\#FFFFFF", "min_width":"d 1000000"},
 
 # battery
-# ${blink xxx}
 ${if_existing /sys/class/power_supply/BAT0}
 {
   "full_text": "ϟ [${battery_bar}] ${format_time ${battery_time} "\hh \mm"}"
@@ -57,10 +56,10 @@ $endif
 {"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "name":"volume"},\
 
 # keyboard language
-{"full_text": "${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "name":"keyboard"},
+{"full_text": "⚀ ${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "name":"keyboard"},
 
 # see man strftime
-{ "full_text": "${time %a, %d. %b %H:%M}", "name":"time"},
+{ "full_text": "⏰  ${time %a, %d. %b %H:%M}", "name":"time"},
  
 # seperator for icons
 { "full_text": "" }

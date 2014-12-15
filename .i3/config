@@ -16,8 +16,8 @@ set $i3lock $HOME/bin/i3exit.sh
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# font pango: Source Code Pro Medium 10
-font pango: Monospace 10
+ font pango: Source Code Pro Medium 12
+# font pango: Monospace 12
 
 # colors
 client.focused #007fbf #007fbf #ffffff
