@@ -10,6 +10,9 @@ set $term roxterm
 # mod key
 set $mod Mod1
 
+# key handler
+set $i3lock $HOME/bin/i3exit.sh
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
@@ -17,7 +20,8 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 #font pango: DejaVuSans 10
 # font pango: Ubuntu Mono 8
 # font pango: Monaco 8
-font pango: Source Code Pro Medium 10
+# font pango: Source Code Pro Medium 10
+font xft:Monospace 9
 # font pango: Ubuntu Mono 13
 
 # colors
@@ -30,7 +34,8 @@ bar {
     # status_command i3status -c ~/.i3/i3status.conf
     status_command ~/.i3/conky.sh
 	  position top
-    font pango: Source Code Pro Medium 10
+    # font pango: Source Code Pro Medium 10
+    # font xft:Monospace 10
     colors {
         # Whole color settings
         background #232323
@@ -139,7 +144,7 @@ set $WS6 6
 set $WS7 7
 set $WS8 8
 set $WS9 9
-set $WS0 10 mu
+set $WS0 10
 
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -188,11 +193,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $mode_system System (s) suspend, (r) reboot, (q) shutdown
+set $mode_system System (l) lock, (s) suspend, (r) reboot, (q) shutdown
 mode "$mode_system" {
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym q exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym l exec --no-startup-id $i3lock lock, mode "default"
+    bindsym s exec --no-startup-id $i3lock suspend, mode "default"
+    bindsym r exec --no-startup-id $i3lock reboot, mode "default"
+    bindsym q exec --no-startup-id $i3lock poweroff, mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -218,7 +224,7 @@ bindsym XF86AudioLowerVolume exec "amixer set Master '3%-'"
 bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
-bindsym XF86ScreenSaver exec --no-startup-id slimlock
+bindsym XF86ScreenSaver exec --no-startup-id $HOME/bin/i3exit.sh lock
 
 # specific window properties
 # assign [class="Spotify"] $WS0

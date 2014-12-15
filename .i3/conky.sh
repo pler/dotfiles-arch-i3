@@ -17,7 +17,10 @@ while read;do
     \"volume\")
       amixer set Master toggle > /dev/null
     ;;
-
+    
+    \"time\")
+      xdg-open http://www.google.com/calendar > /dev/null
+    ;;
     *) ;;# default
   esac
 IFS="}"
