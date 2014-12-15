@@ -38,12 +38,15 @@ $endif
 #{"full_text": "DWN ${downspeed enp4s0}", "color":"\#FFFFFF", "min_width":"d 1000000"},
 
 # battery
+# ${blink xxx}
+${if_existing /sys/class/power_supply/BAT0}
 {
-  "full_text": "ϟ ${battery_percent BAT0}%"
+  "full_text": "ϟ ${battery_bar BAT0} (${battery_time BAT0}) ${battery BAT0}"
   ${if_match ${battery_percent BAT0}<20}
     , "color": "\#E84F4F"
   ${endif}
 },
+$endif
 
 # Volume:
 {"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "name":"volume"},\
