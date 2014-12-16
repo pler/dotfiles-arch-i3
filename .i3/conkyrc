@@ -13,30 +13,28 @@ TEXT
 
 # CPU
 {"full_text": "▣ [$cpubar]"},
-# {"full_text": "CPU $cpu% [${cpu cpu1}.${cpu cpu2}.${cpu cpu3}.${cpu cpu4}]", "color":"\#FFFFFF", "min_width":"CPU 99%"},
 
 # Memory
-# {"full_text": "MEM $memperc%", "color":"\#FFFFFF", "min_width":"MEM 99%"},
 {"full_text": "≣ [$membar]" },
 
 # network
-{ "full_text" : "wlan ✖ ✓"},
-${if_empty ${exec cat /proc/net/wireless | grep wlp7s0}}
-# {
-# ${if_up wlp7s0}
-#   "full_text": "wifi ${wireless_essid wlp7s0} (${wireless_link_qual_perc wlp7s0}%)",
-# $endif
-# ${if_up enp13s0}
-#   "full_text": "eth",
-# $endif
-# },
-$endif
+${if_up wlp7s0}
+{
+  ${if_match "${exec nmcli device status | grep wlp7s0 | awk '{print $3}'}"=="connected" }
+    "full_text": "${wireless_essid wlp7s0} [${wireless_link_bar wlp7s0}]"
+    # , "color" : "\#00FF00"
+  ${else}
+    "full_text": "${wireless_essid wlp7s0}"
+    , "color" : "\#FF0000"
+  ${endif}
+},
+${endif}
 
-#${if_up wlp7s0}{"full_text": " ≈ ${wireless_essid wlp7s0} [${wireless_link_qual_perc wlp7s0}%] ","color":"\#33CC99"},
-#$else${if_up enp13s0}{"full_text": " ≈ eth0 ","color":"\#33CC99"},
-#$else{"full_text": " ≈ no connection ","color":"\#33CC99"},$endif$endif$endif
-#{"full_text": "UP  ${upspeed enp4s0}", "color":"\#33CC99", "min_width":"u 1000000"},
-#{"full_text": "DWN ${downspeed enp4s0}", "color":"\#FFFFFF", "min_width":"d 1000000"},
+${if_up eth0}
+{
+  "full_text": "eth0"
+},
+${endif}
 
 # battery
 ${if_existing /sys/class/power_supply/BAT0}
@@ -56,10 +54,10 @@ $endif
 {"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "name":"volume"},\
 
 # keyboard language
-{"full_text": "⚀ ${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "name":"keyboard"},
+{"full_text": "${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "name":"keyboard"},
 
 # see man strftime
-{ "full_text": "⏰  ${time %a, %d. %b %H:%M}", "name":"time"},
+{ "full_text": "${time %a, %d. %b %H:%M}", "name":"time"},
  
 # seperator for icons
 { "full_text": "" }
