@@ -30,9 +30,9 @@ ${if_up wlp7s0}
 },
 ${endif}
 
-${if_up eth0}
+${if_up enp13s0}
 {
-  "full_text": "eth0"
+  "full_text": "eth0 ${addr enp13s0}"
 },
 ${endif}
 
