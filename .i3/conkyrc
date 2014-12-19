@@ -13,51 +13,49 @@ TEXT
 
 # CPU ▣
 {"full_text": "CPU", "color":"\#007fff", "separator": false, "separator_block_width":6 },
-{"full_text": "[$cpubar]"},
+{"full_text": "$cpu%", "min_width": "99%", "align": "right" },
 
 # Memory ≣
 {"full_text": "MEMORY", "color":"\#007fff", "separator": false, "separator_block_width":6 },
-{"full_text": "[$membar]" },
+{"full_text": "$memperc%", "min_width": "99%", "align": "right" },
 
 # network
 ${if_up wlp7s0}
 {"full_text": "WLP7S0", "color":"\#007fff", "separator": false, "separator_block_width":6 },
 {
   ${if_match "${exec nmcli device status | grep wlp7s0 | awk '{print $3}'}"=="connected" }
-    "full_text": "${wireless_essid wlp7s0} [${wireless_link_bar wlp7s0}]"
-    # , "color" : "\#00FF00"
+    "full_text": "${wireless_essid wlp7s0} ${wireless_link_qual wlp7s0}%"
   ${else}
-    "full_text": "${wireless_essid wlp7s0}"
-    , "color" : "\#FF0000"
+    "full_text": "${wireless_essid wlp7s0}", "color" : "\#FF0000"
   ${endif}
 },
 ${endif}
 
 ${if_up enp13s0}
+${if_match "${addr enp13s0}"!="No Address" }
 {"full_text": "ETH0", "color":"\#007fff", "separator": false, "separator_block_width":6 },
-{
-  "full_text": "${addr enp13s0}"
-},
+{"full_text": "${addr enp13s0}"},
+${endif}
 ${endif}
 
 # battery ϟ
 ${if_existing /sys/class/power_supply/BAT0}
 {"full_text": "BATTERY", "color":"\#007fff", "separator": false, "separator_block_width":6 },
 {
-  "full_text": "[${battery_bar}] ${format_time ${battery_time} "\hh \mm", "urgent":true }"
+  "full_text": "${battery_percent}% (${format_time ${battery_time} "\hh \mm"})"
   ${if_match "${exec cat /sys/class/power_supply/BAT0/status}" == "Discharging"}
     ${if_match ${battery_percent}<10}
       ${blink ,"color":"\#E84F4F"}
     ${endif}
   $else
-    # , "color":"\#00FF00"
+    , "color":"\#00FF00"
   ${endif}
 },
 $endif
 
 # Volume: ♪
 {"full_text": "VOLUME", "color":"\#007fff", "separator": false, "separator_block_width":6 },
-{"full_text": "${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "name":"volume"},\
+{"full_text": "${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "name":"volume", "min_width": "99%", "align": "right" },\
 
 # keyboard language
 {"full_text": "KEYBOARD", "color":"\#007fff", "separator": false, "separator_block_width":6 },
@@ -65,7 +63,7 @@ $endif
 
 # see man strftime
 {"full_text": "DATE", "color":"\#007fff", "separator": false, "separator_block_width":6 },
-{ "full_text": "${time %a, %d. %b %H:%M}", "name":"time"},
+{ "full_text": "${time %Y-%m-%d %a %H:%M}", "name":"time"},
  
 # seperator for icons
 { "full_text": "" }
