@@ -11,14 +11,17 @@ times_in_seconds true
 TEXT
 ,[
 
-# CPU
-{"full_text": "▣ [$cpubar]"},
+# CPU ▣
+{"full_text": "CPU", "color":"\#007fff", "separator": false, "separator_block_width":6 },
+{"full_text": "[$cpubar]"},
 
-# Memory
-{"full_text": "≣ [$membar]" },
+# Memory ≣
+{"full_text": "MEMORY", "color":"\#007fff", "separator": false, "separator_block_width":6 },
+{"full_text": "[$membar]" },
 
 # network
 ${if_up wlp7s0}
+{"full_text": "WLP7S0", "color":"\#007fff", "separator": false, "separator_block_width":6 },
 {
   ${if_match "${exec nmcli device status | grep wlp7s0 | awk '{print $3}'}"=="connected" }
     "full_text": "${wireless_essid wlp7s0} [${wireless_link_bar wlp7s0}]"
@@ -31,32 +34,37 @@ ${if_up wlp7s0}
 ${endif}
 
 ${if_up enp13s0}
+{"full_text": "ETH0", "color":"\#007fff", "separator": false, "separator_block_width":6 },
 {
-  "full_text": "eth0 ${addr enp13s0}"
+  "full_text": "${addr enp13s0}"
 },
 ${endif}
 
-# battery
+# battery ϟ
 ${if_existing /sys/class/power_supply/BAT0}
+{"full_text": "BATTERY", "color":"\#007fff", "separator": false, "separator_block_width":6 },
 {
-  "full_text": "ϟ [${battery_bar}] ${format_time ${battery_time} "\hh \mm"}"
+  "full_text": "[${battery_bar}] ${format_time ${battery_time} "\hh \mm", "urgent":true }"
   ${if_match "${exec cat /sys/class/power_supply/BAT0/status}" == "Discharging"}
     ${if_match ${battery_percent}<10}
       ${blink ,"color":"\#E84F4F"}
     ${endif}
   $else
-    , "color":"\#00FF00"
+    # , "color":"\#00FF00"
   ${endif}
 },
 $endif
 
-# Volume:
-{"full_text": "♪ ${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "name":"volume"},\
+# Volume: ♪
+{"full_text": "VOLUME", "color":"\#007fff", "separator": false, "separator_block_width":6 },
+{"full_text": "${exec amixer get Master | awk -F'[]%[]' '/%/ {if ($7 == "off") { print "MUT" } else { print $2"%" }}'}", "name":"volume"},\
 
 # keyboard language
+{"full_text": "KEYBOARD", "color":"\#007fff", "separator": false, "separator_block_width":6 },
 {"full_text": "${exec setxkbmap -query | awk '/layout/{print $2}' | tr 'a-z' 'A-Z'}", "name":"keyboard"},
 
 # see man strftime
+{"full_text": "DATE", "color":"\#007fff", "separator": false, "separator_block_width":6 },
 { "full_text": "${time %a, %d. %b %H:%M}", "name":"time"},
  
 # seperator for icons

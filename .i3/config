@@ -28,7 +28,7 @@ client.urgent #aa0000 #990000 #ffffff
 # i3bar
 bar {
     # status_command i3status -c ~/.i3/i3status.conf
-    status_command ~/.i3/conky.sh
+    status_command ~/.i3/conky.sh test
 	  position top
     # font pango: Source Code Pro Medium 10
     # font pango: DejaVu Sans Mono, Icons 8
@@ -36,6 +36,7 @@ bar {
         # Whole color settings
         background #232323
         statusline #DCDCDC
+        # statusline #DCDCDC
         separator  #666666
 
         # Type             border  background font
