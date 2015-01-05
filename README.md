@@ -117,6 +117,7 @@ https://wiki.archlinux.org/index.php/Infinality-bundle+fonts
   * config
 * for a notification manager, install: `dunst`
 * clipboard manager: `xclip`
+* `j4-dmenu-desktop` faster than dmenu
 
 
 
