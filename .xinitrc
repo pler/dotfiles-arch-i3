@@ -34,7 +34,11 @@ case `hostname -s` in
   "phil-laptop-linux")
     setxkbmap de &
     nm-applet &
-    xrandr --output LVDS1 --auto --primary --output VGA1 --off &
+    if [[ $(xrandr | awk '/VGA1/ {print $2}') == "connected" ]]; then
+      xrandr --output LVDS1 --auto --primary --output VGA1 --auto --right-of LVDS1 &
+    else
+      xrandr --output LVDS1 --auto --primary --output VGA1 --off &
+    fi
     xautolock -time 5 -locker '$HOME/bin/i3exit.sh lock' &
   ;;
   "phil-desktop-linux")
